@@ -82,26 +82,26 @@ export const getUsers = query({
 	},
 });
 
-// export const getMe = query({
-// 	args: {},
-// 	handler: async (ctx, args) => {
-// 		const identity = await ctx.auth.getUserIdentity();
-// 		if (!identity) {
-// 			throw new ConvexError("Unauthorized");
-// 		}
+export const getMe = query({
+	args: {},
+	handler: async (ctx, args) => {
+		const identity = await ctx.auth.getUserIdentity();
+		if (!identity) {
+			throw new ConvexError("Unauthorized");
+		}
 
-// 		const user = await ctx.db
-// 			.query("users")
-// 			.withIndex("by_tokenIdentifier", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-// 			.unique();
+		const user = await ctx.db
+			.query("users")
+			.withIndex("by_tokenIdentifier", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
+			.unique();
 
-// 		if (!user) {
-// 			throw new ConvexError("User not found");
-// 		}
+		if (!user) {
+			throw new ConvexError("User not found");
+		}
 
-// 		return user;
-// 	},
-// });
+		return user;
+	},
+});
 
 // export const getGroupMembers = query({
 // 	args: { conversationId: v.id("conversations") },
