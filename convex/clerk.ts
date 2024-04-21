@@ -1,6 +1,5 @@
 "use node";
 
-// import type { WebhookEvent } from "@clerk/clerk-sdk-node";
 import type { WebhookEvent } from "@clerk/clerk-sdk-node";
 import { v } from "convex/values";
 
